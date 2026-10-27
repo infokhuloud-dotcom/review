@@ -27,6 +27,7 @@
   h1, h2 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; color: var(--plum); line-height: 1.15; margin: 0 0 6px; }
   h1 { font-size: 30px; } h2 { font-size: 26px; }
   .sub { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  [hidden] { display: none !important; }
   .step { display: none; animation: in .25s ease; } .step.on { display: block; }
   @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .search { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font: inherit; margin-bottom: 12px; }
@@ -61,7 +62,6 @@
   .toast.on { opacity: 1; transform: translateX(-50%); }
   .center { text-align: center; } .big { font-size: 56px; margin: 18px 0 4px; }
   .back { background: none; border: 0; color: var(--muted); font: 500 14px Inter, sans-serif; cursor: pointer; padding: 0 0 14px; }
-  .small-g { display: block; text-align: center; margin-top: 16px; color: var(--muted); font-size: 13px; }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 0 16px 28px; }
 </style>
 </head>
@@ -103,7 +103,6 @@
     <label for="ph">WhatsApp number (optional, so we can fix it)</label>
     <input type="tel" id="ph" autocomplete="tel" placeholder="+91">
     <div class="bar"><button class="btn primary" id="sendLow">Send to Khuloud</button></div>
-    <a class="small-g" id="lowGoogle" href="#" hidden>Prefer to post publicly? Leave a Google review</a>
   </section>
 
   <!-- STEP 3b: Google review (4-5 stars) -->
@@ -205,7 +204,7 @@
     state.stars = n; paintStars(n);
     setTimeout(() => {
       if (n >= C.GOOGLE_MIN_STARS) { save({ type: "rating" }); newReview(); go("s-high"); }
-      else { $("lowGoogle").hidden = !!C.STRICT_GATING; go("s-low"); }
+      else go("s-low");
     }, 280);
   }
 
@@ -223,7 +222,6 @@
     $("tyGoogle").hidden = true;
     go("s-thanks");
   };
-  $("lowGoogle").onclick = (e) => { e.preventDefault(); save({ type: "low-to-google" }, true); openGoogle(); };
 
   // ---------- step 3b: high ----------
   function newReview() {

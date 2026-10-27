@@ -38,9 +38,7 @@ Add `&o=1234` to tag an order number; it shows up in the Sheet.
 Product ids are in `reviews.js` (the `id:` of each product).
 
 ## Settings (config.js)
-- `STRICT_GATING: true`: 1-3 star customers never see a Google link. Set it to `false` to show a small
-  "post on Google" link under the complaint form (the Google-policy-safe version).
-- `GOOGLE_MIN_STARS: 4`: the lowest star rating that goes to Google.
+- `GOOGLE_MIN_STARS: 4`: the lowest star rating that goes to Google. Lower ratings only see the private complaint form (no Google link).
 
 ## How the "already logged in" part works
 - WhatsApp opens links in your phone's main browser (Safari, or Chrome on Android), where people are already
