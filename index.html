@@ -214,7 +214,10 @@
     const fb = $("fb").value.trim();
     if (!fb) { toast("Please tell us what happened"); $("fb").focus(); return; }
     $("sendLow").disabled = true; $("sendLow").textContent = "Sending…";
-    await save({ type: "feedback", feedback: fb, name: $("nm").value.trim(), phone: $("ph").value.trim() });
+    await Promise.race([
+      save({ type: "feedback", feedback: fb, name: $("nm").value.trim(), phone: $("ph").value.trim() }),
+      new Promise((r) => setTimeout(r, 1500)),
+    ]);
     $("tyTitle").textContent = "Thank you for telling us";
     $("tyText").textContent = $("ph").value.trim() ? "Our team will reach out to you on WhatsApp shortly to make this right." : "We read every message and we'll use yours to do better.";
     $("tyGoogle").hidden = true;
