@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khuloud Perfumes · Your Experience</title>
+<meta name="description" content="Tell us how you liked your Khuloud fragrance.">
+<meta name="theme-color" content="#4B2451">
+<meta property="og:title" content="How was your Khuloud fragrance?">
+<meta property="og:description" content="Takes 30 seconds. We read every response.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #4B2451; --deep: #321437; --mid: #09060C; --mauve: #735C78;
+    --gold: #D4AF37; --lgold: #F0D48A; --cream: #FFF9EE; --white: #FBF8F2;
+    --line: #E8DCCB; --text: #2A1A2D; --muted: #7A6A7D;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; background: var(--cream); color: var(--text); font: 16px/1.5 Inter, system-ui, sans-serif; }
+  header { background: var(--plum); padding: 22px 16px 26px; text-align: center; }
+  header img { height: 64px; width: auto; display: block; margin: 0 auto; }
+  main { max-width: 520px; margin: 0 auto; padding: 22px 16px 48px; }
+  h1, h2 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; color: var(--plum); line-height: 1.15; margin: 0 0 6px; }
+  h1 { font-size: 30px; } h2 { font-size: 26px; }
+  .sub { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  .step { display: none; animation: in .25s ease; } .step.on { display: block; }
+  @keyframes in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .search { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font: inherit; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .chip { text-align: left; border: 1.5px solid var(--line); background: #fff; border-radius: 12px; padding: 10px 12px; cursor: pointer; font: inherit; color: var(--text); transition: all .15s; position: relative; }
+  .chip b { display: block; font-weight: 600; font-size: 14.5px; }
+  .chip small { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.35; margin-top: 2px; }
+  .chip.sel { border-color: var(--plum); background: #F6EEF7; box-shadow: inset 0 0 0 1px var(--plum); }
+  .chip.sel::after { content: "✓"; position: absolute; top: 8px; right: 10px; color: var(--plum); font-weight: 700; }
+  .bar { position: sticky; bottom: 0; padding: 14px 0 calc(10px + env(safe-area-inset-bottom)); background: linear-gradient(transparent, var(--cream) 30%); }
+  .btn { display: block; width: 100%; border: 0; border-radius: 14px; padding: 15px 18px; font: 600 16px Inter, sans-serif; cursor: pointer; text-align: center; text-decoration: none; }
+  .btn.primary { background: var(--plum); color: #fff; }
+  .btn.gold { background: var(--gold); color: var(--mid); }
+  .btn.ghost { background: transparent; color: var(--plum); border: 1.5px solid var(--plum); margin-top: 10px; }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .count { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 8px; min-height: 18px; }
+  .stars { display: flex; justify-content: center; gap: 6px; margin: 26px 0 10px; }
+  .star { font-size: 50px; line-height: 1; background: none; border: 0; cursor: pointer; color: #DCCFBF; padding: 2px; transition: transform .1s, color .1s; }
+  .star.lit { color: var(--gold); } .star:active { transform: scale(.9); }
+  .starlabel { text-align: center; color: var(--plum); font-weight: 600; min-height: 24px; }
+  .picked { font-size: 13px; color: var(--muted); text-align: center; margin-top: 4px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--plum); margin: 14px 0 6px; }
+  textarea, input[type=text], input[type=tel] { width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font: inherit; background: #fff; color: var(--text); }
+  textarea { min-height: 130px; resize: vertical; }
+  .review { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 4px; margin: 6px 0 10px; }
+  .review textarea { border: 0; min-height: 190px; font-size: 15.5px; line-height: 1.55; }
+  .mini { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .linkbtn { background: none; border: 0; color: var(--plum); font: 600 14px Inter, sans-serif; cursor: pointer; padding: 6px 0; }
+  .how { background: #F6EEF7; border-radius: 14px; padding: 14px 16px; margin: 0 0 16px; font-size: 14px; }
+  .how ol { margin: 6px 0 0; padding-left: 20px; } .how li { margin: 3px 0; }
+  .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px); background: var(--mid); color: var(--lgold); padding: 12px 18px; border-radius: 12px; font-weight: 600; opacity: 0; transition: all .25s; pointer-events: none; z-index: 9; max-width: 90vw; text-align: center; }
+  .toast.on { opacity: 1; transform: translateX(-50%); }
+  .center { text-align: center; } .big { font-size: 56px; margin: 18px 0 4px; }
+  .back { background: none; border: 0; color: var(--muted); font: 500 14px Inter, sans-serif; cursor: pointer; padding: 0 0 14px; }
+  .small-g { display: block; text-align: center; margin-top: 16px; color: var(--muted); font-size: 13px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 0 16px 28px; }
+</style>
+</head>
+<body>
+<header><img src="logo.png" alt="Khuloud Perfumes"></header>
+<main>
+
+  <!-- STEP 1: products -->
+  <section class="step on" id="s-products">
+    <h1>Thank you for choosing Khuloud</h1>
+    <p class="sub">What did you buy? Tap everything that was in your order.</p>
+    <input class="search" id="q" type="search" placeholder="Search fragrances…" autocomplete="off">
+    <div class="grid" id="grid"></div>
+    <div class="bar">
+      <div class="count" id="count"></div>
+      <button class="btn primary" id="toStars" disabled>Continue</button>
+    </div>
+  </section>
+
+  <!-- STEP 2: stars -->
+  <section class="step" id="s-stars">
+    <button class="back" data-go="s-products">← Change products</button>
+    <h1>How was your experience?</h1>
+    <p class="sub">Tap a star.</p>
+    <div class="stars" id="stars"></div>
+    <div class="starlabel" id="starlabel"></div>
+    <div class="picked" id="pickedList"></div>
+  </section>
+
+  <!-- STEP 3a: private feedback (1-3 stars) -->
+  <section class="step" id="s-low">
+    <button class="back" data-go="s-stars">← Back</button>
+    <h2>We're sorry we fell short</h2>
+    <p class="sub">This goes straight to the founder, not to the public. Tell us what went wrong and we'll make it right.</p>
+    <label for="fb">What happened?</label>
+    <textarea id="fb" placeholder="The scent, longevity, delivery, packaging… anything."></textarea>
+    <label for="nm">Your name (optional)</label>
+    <input type="text" id="nm" autocomplete="name">
+    <label for="ph">WhatsApp number (optional, so we can fix it)</label>
+    <input type="tel" id="ph" autocomplete="tel" placeholder="+91">
+    <div class="bar"><button class="btn primary" id="sendLow">Send to Khuloud</button></div>
+    <a class="small-g" id="lowGoogle" href="#" hidden>Prefer to post publicly? Leave a Google review</a>
+  </section>
+
+  <!-- STEP 3b: Google review (4-5 stars) -->
+  <section class="step" id="s-high">
+    <button class="back" data-go="s-stars">← Back</button>
+    <h2>That means the world to us</h2>
+    <p class="sub">Would you share it on Google? We wrote a draft from your order. Edit it however you like.</p>
+    <div class="review"><textarea id="rv" aria-label="Your review"></textarea></div>
+    <div class="mini"><span id="rvStars"></span><button class="linkbtn" id="another">↻ Show me another</button></div>
+    <div class="how"><b>How it works</b>
+      <ol><li>Tap the gold button. Your review is copied.</li>
+          <li>Google opens. Tap <b id="howStars">5</b> stars.</li>
+          <li>Long-press the text box and tap <b>Paste</b>. Post.</li></ol>
+    </div>
+    <div class="bar"><button class="btn gold" id="goGoogle">Copy review &amp; open Google</button></div>
+  </section>
+
+  <!-- STEP 4: thanks -->
+  <section class="step center" id="s-thanks">
+    <div class="big">🤍</div>
+    <h2 id="tyTitle">Thank you</h2>
+    <p class="sub" id="tyText"></p>
+    <a class="btn ghost" id="tyGoogle" href="#" hidden>Open Google again</a>
+  </section>
+
+</main>
+<footer>Khuloud Perfumes · Delhi</footer>
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script src="reviews.js"></script>
+<script>
+(function () {
+  const C = window.KHULOUD_CONFIG, PRODUCTS = window.KHULOUD_PRODUCTS;
+  const $ = (id) => document.getElementById(id);
+  const params = new URLSearchParams(location.search);
+  const state = { picked: new Set(), stars: 0, reviewId: "" };
+  const sid = Math.random().toString(36).slice(2, 10);
+
+  // ---------- navigation ----------
+  function go(id) {
+    document.querySelectorAll(".step").forEach((s) => s.classList.toggle("on", s.id === id));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  document.querySelectorAll("[data-go]").forEach((b) => b.onclick = () => go(b.dataset.go));
+
+  function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("on"), 2400); }
+
+  // ---------- saving to Google Sheet ----------
+  function save(data, beacon) {
+    if (!C.SHEET_ENDPOINT || C.SHEET_ENDPOINT.indexOf("http") !== 0) { console.warn("SHEET_ENDPOINT not set", data); return Promise.resolve(); }
+    const body = JSON.stringify(Object.assign({
+      session: sid, ts: new Date().toISOString(),
+      products: pickedNames().join(", "), stars: state.stars,
+      ref: params.get("ref") || params.get("o") || "", ua: navigator.userAgent,
+    }, data));
+    if (beacon && navigator.sendBeacon) { try { if (navigator.sendBeacon(C.SHEET_ENDPOINT, new Blob([body], { type: "text/plain" }))) return Promise.resolve(); } catch (e) {} }
+    return fetch(C.SHEET_ENDPOINT, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body }).catch(() => {});
+  }
+
+  // ---------- step 1: products ----------
+  const pickedNames = () => PRODUCTS.filter((p) => state.picked.has(p.id)).map((p) => p.name);
+  function renderGrid(filter) {
+    const f = (filter || "").toLowerCase().trim();
+    $("grid").innerHTML = "";
+    PRODUCTS.filter((p) => !f || (p.name + " " + p.notes).toLowerCase().includes(f)).forEach((p) => {
+      const b = document.createElement("button");
+      b.className = "chip" + (state.picked.has(p.id) ? " sel" : "");
+      b.innerHTML = "<b>" + p.name + "</b><small>" + p.notes + "</small>";
+      b.onclick = () => { state.picked.has(p.id) ? state.picked.delete(p.id) : state.picked.add(p.id); b.classList.toggle("sel"); updateCount(); };
+      $("grid").appendChild(b);
+    });
+  }
+  function updateCount() {
+    const n = state.picked.size;
+    $("count").textContent = n ? n + " selected: " + pickedNames().join(", ") : "";
+    $("toStars").disabled = !n;
+  }
+  $("q").oninput = (e) => renderGrid(e.target.value);
+  // Pre-select from link: ?p=velour-whisper,crimson-veil
+  (params.get("p") || "").split(",").forEach((id) => { if (PRODUCTS.some((p) => p.id === id.trim())) state.picked.add(id.trim()); });
+  renderGrid(); updateCount();
+  $("toStars").onclick = () => { $("pickedList").textContent = pickedNames().join(" · "); paintStars(state.stars); go("s-stars"); };
+
+  // ---------- step 2: stars ----------
+  const LABELS = ["", "Very poor", "Not great", "It was okay", "Really good", "Loved it!"];
+  for (let i = 1; i <= 5; i++) {
+    const s = document.createElement("button");
+    s.className = "star"; s.textContent = "★"; s.setAttribute("aria-label", i + " star" + (i > 1 ? "s" : ""));
+    s.onmouseenter = () => paintStars(i); s.onmouseleave = () => paintStars(state.stars);
+    s.onclick = () => chooseStars(i);
+    $("stars").appendChild(s);
+  }
+  function paintStars(n) {
+    [...$("stars").children].forEach((s, i) => s.classList.toggle("lit", i < n));
+    $("starlabel").textContent = LABELS[n] || "";
+  }
+  function chooseStars(n) {
+    state.stars = n; paintStars(n);
+    setTimeout(() => {
+      if (n >= C.GOOGLE_MIN_STARS) { save({ type: "rating" }); newReview(); go("s-high"); }
+      else { $("lowGoogle").hidden = !!C.STRICT_GATING; go("s-low"); }
+    }, 280);
+  }
+
+  // ---------- step 3a: low ----------
+  $("sendLow").onclick = async () => {
+    const fb = $("fb").value.trim();
+    if (!fb) { toast("Please tell us what happened"); $("fb").focus(); return; }
+    $("sendLow").disabled = true; $("sendLow").textContent = "Sending…";
+    await save({ type: "feedback", feedback: fb, name: $("nm").value.trim(), phone: $("ph").value.trim() });
+    $("tyTitle").textContent = "Thank you for telling us";
+    $("tyText").textContent = $("ph").value.trim() ? "Our team will reach out to you on WhatsApp shortly to make this right." : "We read every message and we'll use yours to do better.";
+    $("tyGoogle").hidden = true;
+    go("s-thanks");
+  };
+  $("lowGoogle").onclick = (e) => { e.preventDefault(); save({ type: "low-to-google" }, true); openGoogle(); };
+
+  // ---------- step 3b: high ----------
+  function newReview() {
+    const r = window.generateReview([...state.picked], state.stars);
+    state.reviewId = r.id; $("rv").value = r.text;
+    $("rvStars").textContent = "★".repeat(state.stars) + " · " + state.stars + " stars";
+    $("howStars").textContent = state.stars;
+  }
+  $("another").onclick = newReview;
+
+  async function copy(text) {
+    try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+    const ta = $("rv"); ta.focus(); ta.select(); ta.setSelectionRange(0, 99999);
+    try { return document.execCommand("copy"); } catch (e) { return false; }
+  }
+
+  // Opens Google in the phone's real browser / Maps app, where the customer is already signed in.
+  function googleUrl() { return C.GOOGLE_REVIEW_URL; }
+  function openGoogle() {
+    const url = googleUrl();
+    if (!url || url.indexOf("http") !== 0) { toast("Google link not set up yet"); return; }
+    const ua = navigator.userAgent;
+    const inApp = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Snapchat|Twitter|LinkedInApp/i.test(ua);
+    const android = /Android/i.test(ua), ios = /iPhone|iPad|iPod/i.test(ua);
+    if (inApp && android) {
+      location.href = "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
+    } else if (inApp && ios) {
+      location.href = url.replace(/^https:\/\//, "x-safari-https://");
+      setTimeout(() => { location.href = url; }, 1500);
+    } else {
+      location.href = url;
+    }
+  }
+
+  $("goGoogle").onclick = async () => {
+    const text = $("rv").value.trim();
+    const ok = await copy(text);
+    save({ type: "to-google", review: text, review_id: state.reviewId, copied: ok }, true);
+    toast(ok ? "Copied! Opening Google…" : "Opening Google… copy the text above if paste doesn't work");
+    $("tyTitle").textContent = "Thank you so much";
+    $("tyText").textContent = "Your review helps a small Delhi perfume house grow. It means everything to us.";
+    $("tyGoogle").hidden = false;
+    setTimeout(() => { openGoogle(); go("s-thanks"); }, 900);
+  };
+  $("tyGoogle").onclick = (e) => { e.preventDefault(); copy($("rv").value.trim()); openGoogle(); };
+})();
+</script>
+</body>
+</html>
