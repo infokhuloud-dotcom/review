@@ -1,4 +1,10 @@
-# Khuloud review page: setup (about 10 minutes, all free)
+# Khuloud review page
+
+Status: steps 1 and 2 are DONE (set up by Claude on 2026-10-28).
+- Google review link: https://search.google.com/local/writereview?placeid=ChIJPTiRt_bjDDkRcXSwLYNMlOo
+- Sheet "Khuloud Reviews" (Google account info.rhythmv@gmail.com): https://docs.google.com/spreadsheets/d/1STUh-4OA0iCxkIxZMa4xzaTYYdkRc9GHpBu7m_zflsM/edit
+
+## Original setup steps (for reference)
 
 Live now: https://infokhuloud-dotcom.github.io/review/
 After step 3: https://review.khuloudperfumes.com
